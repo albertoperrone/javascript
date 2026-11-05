@@ -1,20 +1,47 @@
-const productosResidentEvil = ["Resident Evil 1", "Resident Evil 2", "Resident Evil 3", "Resident Evil 4", "Resident Evil 5"];
+const productosCapcom = ["Resident Evil 1", "Resident Evil 2", "Resident Evil 3", "Resident Evil 4", "Resident Evil 5"];
 
-productosResidentEvil.push("Resident Evil 6");
-productosResidentEvil.unshift("Resident Evil Zero")
+productosCapcom.push("Resident Evil 6");
+productosCapcom.unshift("Resident Evil Zero")
+
+const precioIVA = 1.21;
+
+class Capcom {
+    static id = 0
+    constructor (nombreJuego, categoria, clasificacion, precio) {
+        this.id = ++Capcom.id;
+        this.nombreJuego = nombreJuego;
+        this.categoria = categoria;
+        this.clasificacion = clasificacion;
+        this.precio = precio;
+    }
+        
+        calcularIVA = () => {
+            this.precio = this.precio*precioIVA;
+            console.log("Precio en pesos con IVA incluido:" + this.precio)
+        }
+    
+}
+
+const juego1 = new Capcom("Resident Evil zero", "Horror", "Mature 17+", 12)
+const juego2 = new Capcom("Resident Evil 1", "Horror", "Mature 17+", 1,)
+const juego3 = new Capcom("Resident Evil: code veronica", "Horror", "Mature 17+", 7)
+const juego4 = new Capcom("Resident Evil 3", "Horror", "Mature 17+", 5)
+const juego5 = new Capcom("Resident Evil 4", "Horror", "Mature 17+", 10)
+const juego6 = new Capcom("Resident Evil 5", "Horror", "Mature 17+", 25)
+const juego7 = new Capcom("Resident Evil 6", "Horror", "Mature 17+", 29)
 
 const busqueda = prompt("Que producto deseas buscar?");
 
-if (productosResidentEvil.includes(busqueda)) {
-    const posicion = productosResidentEvil.indexOf(busqueda);
+if (productosCapcom.includes(busqueda)) {
+    const posicion = productosCapcom.indexOf(busqueda);
     console.log (`"${busqueda}" está en stock, en la posición ${posicion}`);
 } else {
     console.log(`"${busqueda}" no se encuentra en stock`);
 }
 
-productosResidentEvil.splice(2, 1, "Resident Evil: Code Veronica");
+productosCapcom.splice(2, 1, "Resident Evil: Code Veronica");
 
-const agotado = productosResidentEvil.pop();
+const agotado = productosCapcom.pop();
     console.log(`Se ha eliminado el elemento: ${agotado}`);
 
 function listarStock(lista) {
@@ -25,7 +52,7 @@ function listarStock(lista) {
     console.log(`Total: ${lista.length} productos`);
 }
 
-listarStock(productosResidentEvil);
+listarStock(productosCapcom);
 
 const calcularIVA = precio => precio * 0.21;
 
